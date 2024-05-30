@@ -66,6 +66,10 @@ func setDefaultValueString(s *string, v string) {
 func (b *DefaultBar) Percent(n float64, messages ...string) (err error) {
 	mtx.Lock()
 	defer mtx.Unlock()
+	defer func() {
+		if err := recover(); err != nil {
+		}
+	}()
 
 	if len(messages) > 0 && messages[0] != "" {
 		b.Message = messages[0]

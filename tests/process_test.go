@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/lianggaoqiang/progress"
+	"github.com/loveuer/progress"
 	"reflect"
 	"testing"
 	_ "unsafe"
@@ -54,7 +54,7 @@ func TestUseStoppedProgress(t *testing.T) {
 	}
 }
 
-//go:linkname parseSteps github.com/lianggaoqiang/progress.parseSteps
+//go:linkname parseSteps github.com/loveuer/progress.parseSteps
 func parseSteps(steps []string)
 func TestStepParsed(t *testing.T) {
 	s1 := []string{"", ".", "-.", "-."}

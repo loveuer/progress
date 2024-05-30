@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/lianggaoqiang/progress"
+	"github.com/loveuer/progress"
 	"time"
 )
 

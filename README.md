@@ -1,6 +1,6 @@
-# progress [![](https://camo.githubusercontent.com/315a8800fc96d3c5b32e13227b10500ef850688793cc6664418d018980eb3cb4/68747470733a2f2f676f646f632e6f72672f6769746875622e636f6d2f676f737572692f75696c6976653f7374617475732e737667)](https://pkg.go.dev/github.com/lianggaoqiang/progress) [![https://github.com/lianggaoqiang/progress/blob/main/LICENSE](https://img.shields.io/badge/license-MIT-red.svg)](https://github.com/lianggaoqiang/progress/blob/main/LICENSE) [![](https://github.com/lianggaoqiang/progress/actions/workflows/ci.yml/badge.svg)](https://github.com/lianggaoqiang/progress/actions/workflows/ci.yml)
+# progress [![](https://camo.githubusercontent.com/315a8800fc96d3c5b32e13227b10500ef850688793cc6664418d018980eb3cb4/68747470733a2f2f676f646f632e6f72672f6769746875622e636f6d2f676f737572692f75696c6976653f7374617475732e737667)](https://pkg.go.dev/github.com/loveuer/progress) [![https://github.com/loveuer/progress/blob/main/LICENSE](https://img.shields.io/badge/license-MIT-red.svg)](https://github.com/loveuer/progress/blob/main/LICENSE) [![](https://github.com/loveuer/progress/actions/workflows/ci.yml/badge.svg)](https://github.com/loveuer/progress/actions/workflows/ci.yml)
 
-A thread-safe progress bar printing program, which is designed for printing multiple bars simultaneously with a highly efficient. This package is powered by [single-line-print](https://github.com/lianggaoqiang/single-line-print)
+A thread-safe progress bar printing program, which is designed for printing multiple bars simultaneously with a highly efficient. This package is powered by [single-line-print](https://github.com/loveuer/single-line-print)
 
 This Golang package is cross-platform which works perfectly on Linux, Windows and MacOS. It provides many very simple apis to render the progress bar with diverse styles that you want, in addition, you can also combine these different styles of progress bars in any format.
 ssss
@@ -9,7 +9,7 @@ ssss
 
 ## Install
 ```shell
-go get github.com/lianggaoqiang/progress
+go get github.com/loveuer/progress
 ```
 
 <br>
@@ -17,7 +17,7 @@ go get github.com/lianggaoqiang/progress
 ## Basic usage
 
 ```go
-import "github.com/lianggaoqiang/progress"
+import "github.com/loveuer/progress"
 
 func main(){
 	p := progress.Start()
@@ -31,7 +31,7 @@ func main(){
 }
 ```
 
-<img src="https://github.com/lianggaoqiang/progress/blob/main/doc/simple-bar.gif" style="width:70%" />
+<img src="https://github.com/loveuer/progress/blob/main/doc/simple-bar.gif" style="width:70%" />
 
 <br>
 
@@ -40,7 +40,7 @@ func main(){
 If the example above is not the style you want, you can use method `Custom` to get progress bar with custom style.
 
 ```go
-import "github.com/lianggaoqiang/progress"
+import "github.com/loveuer/progress"
 
 func main() {
 	p := progress.Start()
@@ -62,7 +62,7 @@ func main() {
 }
 ```
 
-<img src="https://github.com/lianggaoqiang/progress/blob/main/doc/custom-bar.gif" style="width:70%;border-radius:6px;" />
+<img src="https://github.com/loveuer/progress/blob/main/doc/custom-bar.gif" style="width:70%;border-radius:6px;" />
 
 The `BarSetting` structure contains rich customization related properties to modify the style of progress bar:
 
@@ -84,7 +84,7 @@ The `BarSetting` structure contains rich customization related properties to mod
 If you want to change the color of the progress bar, you can use built-in color realted method to generate ANSI color characters:
 
 ```go
-import "github.com/lianggaoqiang/progress"
+import "github.com/loveuer/progress"
 
 // Both progress.ColorText(str, progress.Xxx) and progress.XxxText(str) is okay
 // Xxx may be Black, Red, Green, Yellow, Blue, Purple, Cyan, White
@@ -103,7 +103,7 @@ func main() {
 }
 ```
 
-<img src="https://github.com/lianggaoqiang/progress/blob/main/doc/color-bar.gif" style="width:70%" />
+<img src="https://github.com/loveuer/progress/blob/main/doc/color-bar.gif" style="width:70%" />
 
 <br>
 
@@ -112,7 +112,7 @@ func main() {
 The above examples have demonstrated the method of how to utilize the default progress bar. However this package includes not only default progress bar but also two additional UI formats: TextBar and LoadingBar.
 
 ```go
-import "github.com/lianggaoqiang/progress"
+import "github.com/loveuer/progress"
 
 func main(){
 	p := progress.Start()
@@ -133,7 +133,7 @@ func main(){
 }
 ```
 
-<img src="https://github.com/lianggaoqiang/progress/blob/main/doc/loading-bar.gif" style="width:70%" />
+<img src="https://github.com/loveuer/progress/blob/main/doc/loading-bar.gif" style="width:70%" />
 
 The first parameter of NewLoadingBar is the interval of each render, and the remaining parameters are the texts will be printed at each render. You may have noticed that when we creating a LoadingBar, we need write "Loading" three times. While this is fine for short text, if the text is longer, it can cause significant inconvenience. At this point, we can use hyphen(-) to represent the previous text in steps parameter, just like the following(see more parsing rules of custom syntax at [FAQ](#faq)):
 
@@ -157,7 +157,7 @@ It should be noted that `TextBarSetting` and `LoadingBarSetting` have fewer prop
 As mentioned at the beginning, you can combine different styles of bar in any format, the following is an example for combining the bars:
 
 ```go
-import "github.com/lianggaoqiang/progress"
+import "github.com/loveuer/progress"
 
 func main() {
 	p := progress.Start()
@@ -207,7 +207,7 @@ func main() {
 }
 ```
 
-<img src="https://github.com/lianggaoqiang/progress/blob/main/doc/combine.gif" style="width:70%" />
+<img src="https://github.com/loveuer/progress/blob/main/doc/combine.gif" style="width:70%" />
 
 <br>
 
@@ -217,7 +217,7 @@ func main() {
    <br>If you want to use actual "-", use "--" instead. But "---" will be parsed as "-[the previous string]", if you want the last two hyphens be parsed as "-", you could use "()" to change priority, likes following:"-(--)" will be parsed as "[the previous string]-"
 
 2. How to disable auto-stopping feature?
-   <br>You could use `progress.StartWithFlag` method to initialize progress. Three are five flags can be choosed(the fist three inherit from [single-line-print](https://github.com/lianggaoqiang/single-line-print)):
+   <br>You could use `progress.StartWithFlag` method to initialize progress. Three are five flags can be choosed(the fist three inherit from [single-line-print](https://github.com/loveuer/single-line-print)):
    - HideCursor: if set, the cursor will be hidden during printing or writing
    - DisableInput: if set, input will be disabled during printing or writing
    - ResizeReactively: if set, terminal window size will be got before each printing or writing

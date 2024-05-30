@@ -28,7 +28,7 @@ var (
 // define flags
 const (
 	// HideCursor DisableInput ResizeReactively are flags that inherit from single-line-print
-	// see more detail: https://github.com/lianggaoqiang/single-line-print
+	// see more detail: https://github.com/loveuer/single-line-print
 	HideCursor       uint8 = 0x01 // if set, the cursor will be hidden during printing or writing
 	DisableInput     uint8 = 0x02 // if set, input will be disabled during printing or writing
 	ResizeReactively uint8 = 0x04 // if set, terminal window size will be got before each printing or writing
