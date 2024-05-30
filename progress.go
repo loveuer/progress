@@ -145,6 +145,10 @@ func (p *Progress) render() {
 					}
 					content += strings.Repeat(" ", int(bar.Setting.RightSpace))
 					isInline = bar.Setting.Inline
+
+					if bar.Message != "" {
+						content = content + " " + bar.Message
+					}
 				}
 
 				if !isInline {

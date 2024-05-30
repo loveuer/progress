@@ -7,6 +7,7 @@ import (
 type DefaultBar struct {
 	N, lastN float64
 	Setting  BarSetting
+	Message  string
 }
 
 // BarSetting describes the setting of Bar
@@ -62,9 +63,14 @@ func setDefaultValueString(s *string, v string) {
 }
 
 // Percent sets the percent of Bar
-func (b *DefaultBar) Percent(n float64) (err error) {
+func (b *DefaultBar) Percent(n float64, messages ...string) (err error) {
 	mtx.Lock()
 	defer mtx.Unlock()
+
+	if len(messages) > 0 && messages[0] != "" {
+		b.Message = messages[0]
+	}
+
 	if n > 100 {
 		if mode&PercentOverflow == 0 {
 			n = 100
@@ -80,11 +86,11 @@ func (b *DefaultBar) Percent(n float64) (err error) {
 }
 
 // Inc will increase Bar.N by 1 and then render the progress bar
-func (b *DefaultBar) Inc() error {
-	return b.Percent(b.N + 1)
+func (b *DefaultBar) Inc(messages ...string) error {
+	return b.Percent(b.N+1, messages...)
 }
 
 // Add can add specified value to Bar.N and then render the progress bar
-func (b *DefaultBar) Add(n float64) error {
-	return b.Percent(n + b.N)
+func (b *DefaultBar) Add(n float64, messages ...string) error {
+	return b.Percent(n+b.N, messages...)
 }
